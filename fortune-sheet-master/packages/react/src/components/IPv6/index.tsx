@@ -22,16 +22,17 @@ export const IPv6: React.FC<Props> = ({ open, handleOpen }) => {
     const socket = new WebSocket("ws://localhost:8081/ws");
     wsRef.current = socket;
     socket.onopen = () => {
-      socket.send(JSON.stringify({ req: "getData" }));
+      socket.send(JSON.stringify({ req: "getIPv6Data" }));
     };
     socket.onerror = (err) => {
       console.log("连接失败，", err);
     };
     socket.onmessage = async (e) => {
       const { req, data: tableData } = JSON.parse(e.data);
-      // if (req === "getData") {
+      // if (req === "getIPv6Data") {
       //   setData(tableData);
       // }
+      // console.log(data);
     };
   }, []);
   // const { context, setContext } = useContext(WorkbookContext);

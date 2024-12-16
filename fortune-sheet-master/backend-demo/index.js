@@ -122,6 +122,13 @@ wss.on("connection", (ws) => {
           data: await getData("record"),
         })
       );
+    } else if (msg.req === "getIPv6Data") {
+      ws.send(
+        JSON.stringify({
+          req: msg.req,
+          data: await getData(),
+        })
+      );
     }
   });
 
